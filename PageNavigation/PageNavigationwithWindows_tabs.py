@@ -9,18 +9,18 @@ driver = webdriver.Chrome(service=service)
 
 #Url visit
 driver.get("https://katalon-demo-cura.herokuapp.com/profile.php#login")
-
-username=driver.find_element(By.ID,'txt-username')
-password=driver.find_element(By.ID,'txt-password')
-login=driver.find_element(By.ID,'btn-login')
-
-username.send_keys('John Doe')
-password.send_keys('ThisIsNotAPassword')
-time.sleep(5)
-
-login.click()
-time.sleep(5)
-
+#driver.maximize_window()
+time.sleep(2)
+#driver.switch_to.new_window('window')
+driver.switch_to.new_window('tab')
+driver.get("https://www.youtube.com/")
+handle=driver.window_handles
+driver.switch_to.window(handle[0])
+time.sleep(2)
 driver.maximize_window()
-time.sleep(5)
+time.sleep(2)
+windowSize=driver.get_window_size()
+print(windowSize)
+driver.set_window_rect(10,20,400,600)
+time.sleep(2)
 driver.quit()
